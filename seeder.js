@@ -6,7 +6,7 @@ require("dotenv").config();
 // Connection TO DB
 connectToDo();
 
-// Import Books
+// Import Books (seeding database)
 const importBook = async () => {
   try {
     await Book.insertMany(books);
