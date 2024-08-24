@@ -1,5 +1,6 @@
 const { Book } = require("./models/Book");
-const { books } = require("./data");
+const { Author } = require("./models/Author");
+const { books, authors } = require("./data");
 const connectToDo = require("./config/db");
 require("dotenv").config();
 
@@ -17,6 +18,16 @@ const importBook = async () => {
   }
 };
 
+// Import Authors (seeding database)
+const importAuthors = async () => {
+  try {
+    await Author.insertMany(authors);
+    console.log("Author Imported");
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+};
 // Remove Book
 const removeBooks = async () => {
   try {
@@ -32,4 +43,6 @@ if (process.argv[2] === "-import") {
   importBook();
 } else if (process.argv[2] === "-remove") {
   removeBooks();
+} else if (process.argv[2] === "-import-authors") {
+  importAuthors();
 }

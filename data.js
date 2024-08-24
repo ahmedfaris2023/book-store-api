@@ -68,4 +68,5 @@ const authors = [
 
 module.exports = {
   books,
+  authors,
 };
